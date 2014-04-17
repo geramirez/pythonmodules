@@ -316,7 +316,6 @@ class twitterapi:
                                 self.parameters['max_id'] = self.max_id
                                 main_dic = self.twitterreq(url)
                         
-                        keepgoing = False
                                 
     def initexportfile(self,filename = "export.csv"):
         
