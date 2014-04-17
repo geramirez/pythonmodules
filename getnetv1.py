@@ -17,7 +17,7 @@ class twitterapi:
         self.cipher = self.cipher()
         self.exempt = []
         self.key = 1
-        self.sinceid = "0"
+        self.sinceid = "-1"
         
     def getkeys(self,keyfile = "consumer_keys.csv"):
                 #set a key holder
