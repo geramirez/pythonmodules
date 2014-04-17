@@ -111,7 +111,7 @@ class twitterapi:
                 cipher = self.cipher[0]
                 extra5 = self.cipher[1]
 
-                user = user.lower()
+                user = regex.sub("@","",user.lower())
                 alpha   = 'abcdefghijklmnopqrstuvwxyz1234506789'
                 encoded13 = 1
                 
