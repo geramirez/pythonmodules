@@ -7,7 +7,7 @@ import json
 import datetime
 from random import seed, randrange,shuffle
 from math import sqrt
-from sys import setdefaultencoding,exit
+import sys
 import regex
 import csv
 
@@ -74,13 +74,13 @@ class twitterapi:
                 response = json.load(response) 
                          
                 if 'errors' in response.keys():
-                        print response
+                        print(response)
                         if response['errors'][0]['code'] == 88:
-                                print "moving to key: " + str(self.key)
+                                print( "moving to key: " + str(self.key))
                                 self.key += 1
                                 return self.twitterreq(originalurl)
                         else:
-                                print response
+                                print(response)
                                 exit()
                 else:
                         return response
@@ -296,7 +296,7 @@ class twitterapi:
 
                 # set url + parameters
                 url = "https://api.twitter.com/1.1/search/tweets.json"
-                self.parameters = {'q':searchterm,'count':'100','result_type':'recent',
+                self.parameters = {'q':searchterm,'count':'500','result_type':'recent',
                                    'include_entities':'true','since_id':str(self.sinceid)} 
 
                 main_dic = self.twitterreq(url)
@@ -304,17 +304,19 @@ class twitterapi:
                 while keepgoing == True:
 
                         if "errors" in main_dic.keys():
-                                print main_dic
+                                print(main_dic)
                                 break
 
                         elif main_dic['statuses'] == []:
-                                print "There are no more Statuses"
+                                print("There are no more Statuses")
                                 break
 
                         else:
                                 self.DBmaker(main_dic)
                                 self.parameters['max_id'] = self.max_id
                                 main_dic = self.twitterreq(url)
+
+                        break
                         
                                 
     def initexportfile(self,filename = "export.csv"):
@@ -347,12 +349,14 @@ class twitterapi:
                 export.close()
 
 if __name__ == '__main__':
+        #edit for searching in non english languages
         reload(sys)
-        setdefaultencoding("utf-8")
-        instance = twitterapi(True)
+        sys.setdefaultencoding("utf-8")
+        #if true the output will be anonymized if false it will not
+        instance = twitterapi(False)
         #iniciate file
         instance.initexportfile()
         #get keys
         instance.getkeys()
         #set search term        
-        instance.search("#yalichat")
+        instance.search("russia")
