@@ -111,7 +111,7 @@ class twitterapi:
                 cipher = self.cipher[0]
                 extra5 = self.cipher[1]
 
-                user = regex.sub("@","",user.lower())
+                user = regex.sub("\W","",user.lower())
                 alpha   = 'abcdefghijklmnopqrstuvwxyz1234506789'
                 encoded13 = 1
                 
@@ -271,6 +271,7 @@ class twitterapi:
                 
                                 ##anon the from user
                                 tweet_dic['from_user'] = self.encoder(tweet_dic['from_user'])
+                                tweet_dic['in_reply_to_screen_name'] = self.encoder(tweet_dic['in_reply_to_screen_name'])
                 
                                 #annon the rest
                                 if tweet_dic['user_mentions'] != []:
@@ -339,7 +340,7 @@ class twitterapi:
                 export = open(decoderfile,'w')
                 export.write('"' + "user" + '","' + "user_anon"  + '"\n')
                 for user in f:
-                    user = user.replace("\n","").lower()
+                    user = user.replace("\W","").lower()
                     user_anon = self.encoder(user)
                     export.write('"' + user + '","' + user_anon  + '"\n')
         
