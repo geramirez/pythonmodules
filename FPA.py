@@ -1,5 +1,6 @@
 ##this script collects data from Facebook I had to build it without importing
-##a facebook module because it has not been approved for use in the office
+##a facebook or csv module because they had not been approved for use in the office
+##I'm curretnly updating it to work with the csv writer
 
 import urllib2
 import urllib
