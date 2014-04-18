@@ -5,7 +5,7 @@ import oauth2 as oauth
 import urllib2 as urllib
 import json
 import datetime
-from random import seed, randrange,shuffle
+from random import seed, randrange, shuffle
 from math import sqrt
 import sys
 import regex
@@ -315,8 +315,6 @@ class twitterapi:
                                 self.DBmaker(main_dic)
                                 self.parameters['max_id'] = self.max_id
                                 main_dic = self.twitterreq(url)
-
-                        break
                         
                                 
     def initexportfile(self,filename = "export.csv"):
