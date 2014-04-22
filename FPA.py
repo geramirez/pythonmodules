@@ -64,7 +64,6 @@ class FPA:
             pages = [pages]
         else:
             pass
-        print pages
         with open(self.main_export_file,'ab') as csvfile:
                 
             for page in pages:
@@ -259,9 +258,9 @@ class FPA:
                 
 if __name__ == '__main__':
     
-    #instance = FPA("") 
-    #instance.initmainfile(r"C:\Users\gramirez\Desktop\#yali\test1.csv")     
-    #instance.getposts(['colorlines'])
-    #instance.initengagmentbank()
-    #instance.getcomments()
-    #instance.getlikes()
+    instance = FPA("") 
+    instance.initmainfile(r"C:\Users\gramirez\Desktop\#yali\test1.csv")     
+    instance.getposts(['bla'])
+    instance.initengagmentbank()
+    instance.getcomments()
+    instance.getlikes()
